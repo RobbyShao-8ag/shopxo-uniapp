@@ -176,9 +176,12 @@
                         check_field['is_nickname'] = 1;
                     }
                     // 头像是默认则置为空
+                    var default_avatar_url = 'https://shopxo.meinawater.com/static/upload/images/app_nav/2023/11/08/16944444165769.png';
                     if ((user.avatar || null) == null || user.avatar.indexOf('default-user-avatar') != -1) {
                         user['avatar'] = '';
                         check_field['is_avatar'] = 1;
+                    } else if(user.avatar == default_avatar_url) {
+                        check_field['is_avatar'] = 0;
                     }
                     // 手机
                     if(parseInt(user.is_mandatory_bind_mobile || 0) == 1 && (user.mobile || null) == null) {
